@@ -19,6 +19,7 @@ class Student(person):
     def average_marks(self):
         return sum(self.marks.values())/len(self.marks)
 
+    @staticmethod
     def create_student(self):
         student_1 = Student('asema', 16, 'not married',marks={'math': 5, 'biology': 4, 'geography':4})
         student_2 = Student('aruuke', 15, 'not married',marks={'math': 2, 'biology': 3, 'geography':3})
@@ -33,8 +34,6 @@ for char in students_list:
         char.introduce_myself()
         print(f'marks: {char.marks}')
         print(f'average marks: {char.average_marks()}')
-
-
 
 class teacher(person):
     base_salary = 27000

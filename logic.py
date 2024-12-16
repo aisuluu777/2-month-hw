@@ -8,7 +8,7 @@ def start_game(min_number, max_number, chances,capital):
 
     print(f'Добро пожаловать в игру!')
     print(f'Вам нужно угадать число от {min_number} до {max_number}.')
-    print(f'У вас {chances} попыток и начальный капитал {capital}.')
+    print(f'У вас {chances} попыток и начальный капитал. {capital}.')
 
     for chance in range(chances + 1):
         if capital <= 0:
@@ -40,6 +40,3 @@ def start_game(min_number, max_number, chances,capital):
             print('Ошибка ввода! Пожалуйста, введите число.')
 
         print(f'Игра окончена. Ваш итоговый капитал: {capital} монет.')
-
-
-

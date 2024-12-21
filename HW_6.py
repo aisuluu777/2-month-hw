@@ -36,26 +36,29 @@ print(selected)
 
 
 
-list3 = [2,4,6,8,10,12,14,16,18,20,22,24,26]
 
-def binary_search(target, nums):
+
+def binary_search(Val, nums):
+    N = len(nums)
+    ResultOk = False
     first = 0
-    last = len(nums) - 1
-
+    last = N - 1
+    Pos = -1
     while first <= last:
-        mid = (first + last) // 2
-        middle = nums[mid]
-
-        if middle == target:
-            return f'Элемент найден {middle}'
-        elif middle < target:
-            first = mid + 1
+        middle = (first + last) // 2
+        if Val == nums[middle]:
+            first = middle
+            last = first
+            ResultOk = True
+            Pos = middle
+            break
+        elif Val > nums[middle] :
+            first = middle + 1
         else:
-            last = mid - 1
+            last = middle - 1
+    if ResultOk == True:
+        return f'Элемент найден: {Pos}'
+    else:
+        return f'Элемент не найден'
 
-    return 'Элемент не найден'
-
-
-
-result = binary_search(12, list3)
-print(result)
+print(binary_search(12, [2,4,6,8,10,12,14,16,18,20,22,24,26]))

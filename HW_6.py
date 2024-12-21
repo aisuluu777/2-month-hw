@@ -33,11 +33,6 @@ print(selected)
 
 
 
-
-
-
-
-
 def binary_search(Val, nums):
     N = len(nums)
     ResultOk = False
@@ -62,3 +57,4 @@ def binary_search(Val, nums):
         return f'Элемент не найден'
 
 print(binary_search(12, [2,4,6,8,10,12,14,16,18,20,22,24,26]))
+

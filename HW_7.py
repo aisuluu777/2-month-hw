@@ -117,20 +117,19 @@ def select_by_price(hw_db, price, quantity):
     except sqlite3.Error as e:
         print(e)
 
-
-def find_by_name(hw_db, title_products):
+def find_by_name(hw_db, name):
     sql = '''SELECT * FROM products WHERE title_products LIKE ?'''
     try:
         with sqlite3.connect(hw_db) as connection:
             cursor = connection.cursor()
-            cursor.execute(sql, (title_products + '%',))
+            cursor.execute(sql, ('%' + name + '%',))
             rows = cursor.fetchall()
             for row in rows:
                 print(row)
     except sqlite3.Error as e:
         print(e)
 
-find_by_name(db_name ,'%a%')
+find_by_name(db_name ,'a')
 delete_products(db_name,12)
 select_by_price(db_name,1000 , 10)
 update_products_quantity(db_name,25000 , 10)

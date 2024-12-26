@@ -152,7 +152,7 @@ db_name = 'students.db'
 def get_cities(connection):
     get ='''SELECT ct_id, title FROM cities'''
     cursor = connection.cursor()
-    cursor.execute()
+    cursor.execute(get)
     return cursor.fetchall()
 user_answer =int(input('Вы можете отобразить список учеников по выбранному id города из перечня городов ниже,\n'
       'для выхода из программы введите 0:'))
@@ -166,6 +166,38 @@ def get_students_by_city(connection, city_id):
     cursor = connection.cursor()
     cursor.execute(query, (city_id,))
     return cursor.fetchall()
-get_cities(my_conn)
-get_students_by_city(my_conn, user_answer)
 
+def main():
+    connection = create_connection('students.db')
+    if not connection:
+        print('не удалось подключится к базе данных')
+        return
+
+    while True:
+        print('Вы можете отобразить список учеников по выбранному id города из перечня городов ниже,\n'
+              ' для выхода из программы введите 0:')
+        cities = get_cities(connection)
+        if not cities:
+            print('Произошла ошибка')
+            break
+        for city in cities:
+            print(f'{city[0]}, {city[1]}')
+        try:
+            city_id = int(input('введите id города'))
+
+        except ValueError:
+            print('Произошла ошибка, пожалуйста попробуйте снова.')
+
+        students = get_students_by_city(connection, city_id)
+        if not students:
+            print(f'В городе с id {city_id} нет учеников или неверный id.')
+
+        else:
+            print('\nСписок учеников:')
+        for student in students: print(
+            f'Имя: {student[0]}, Фамилия: {student[1]}, Страна: {student[2]},\n'
+            f' Город: {student[3]}, Площадь города: {student[4]} км²')
+        connection.close()
+
+if __name__ == '__main__':
+    main()

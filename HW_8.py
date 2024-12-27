@@ -64,7 +64,7 @@ def main():
             print('\nСписок учеников:')
         for student in students: print(
             f'Имя: {student[0]}, Фамилия: {student[1]},\n'
-            f' Город: {student[2]}, Площадь города: {student[3]} км², ')
+            f'Город: {student[2]}, Площадь города: {student[3]} км², ')
 
     connection.close()
 

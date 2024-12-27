@@ -22,7 +22,7 @@ def get_cities(connection):
 
 def get_students_by_city(connection, ct_id):
     try:
-        query = '''SELECT students.first_name, students.last_name, countries.title
+        query = '''SELECT students.first_name, students.last_name,
         cities.title, cities.area
         FROM students 
         INNER JOIN cities ON students.city_id = cities.ct_id

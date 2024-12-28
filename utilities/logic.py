@@ -10,7 +10,7 @@ def start_game(min_number, max_number, chances,capital):
     print(f'Вам нужно угадать число от {min_number} до {max_number}.')
     print(f'У вас {chances} попыток и начальный капитал. {capital}.')
 
-    for chance in range(chances + 1):
+    for chance in range(1,chances + 1):
         if capital <= 0:
             print('У вас не хватает средств! Игра окончена.')
             break
@@ -26,7 +26,7 @@ def start_game(min_number, max_number, chances,capital):
             user_guess = int(input(f'Введите число от {min_number} до {max_number}: '))
 
             if user_guess == target:
-                capital += money
+                capital += money * 2
                 print(f'Ура вы выиграли! {target} и выиграли {money} монет!')
                 break
             else:

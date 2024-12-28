@@ -42,8 +42,6 @@ class Computer:
     def __ge__(self, other):
         return self.__memory >= other.__memory
 
-
-
 class Phone:
     def __init__(self, sim_cards_list):
         self.__sim_cards = sim_cards_list
@@ -57,7 +55,7 @@ class Phone:
         self.__sim_cards = value
 
     def call(self, sim_cards_number, call_to_number):
-        return f'Идет звонок с номера {call_to_number}, с сим карты {sim_cards_number}'
+        return f'Идет звонок на номер {call_to_number}, с сим карты {sim_cards_number}'
 
     def __str__(self):
         return f'Phone`s sim_cards_list: {self.__sim_cards}'
